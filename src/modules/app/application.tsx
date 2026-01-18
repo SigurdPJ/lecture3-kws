@@ -7,7 +7,7 @@ import VectorSource from "ol/source/Vector.js";
 import { GeoJSON } from "ol/format.js";
 import VectorLayer from "ol/layer/Vector.js";
 import type { FeatureLike } from "ol/Feature.js";
-import { Style } from "ol/style.js";
+import { Style, Text } from "ol/style.js";
 
 import "ol/ol.css";
 import "./application.css";
@@ -50,7 +50,7 @@ export function Application() {
 
   function activeFylkeStyle(fylke: FeatureLike) {
     const fylkesnavn = fylke.getProperties()["fylkesnavn"];
-    return new Style({ text: fylke.get("fylkesnavn") || "" });
+    return new Style({ text: new Text({ text: fylkesnavn }) });
   }
 
   function handlePointerMove(event: MapBrowserEvent) {
